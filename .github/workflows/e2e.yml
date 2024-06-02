@@ -1,15 +1,13 @@
 name: E2E Testing
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  deployment_status:
 env:
   APP_URL: ${{ vars.APP_URL }}
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    if: github.event.deployment_status.state == 'success'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
