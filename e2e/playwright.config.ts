@@ -1,12 +1,17 @@
 import { defineConfig, devices } from "@playwright/test";
 
+let webServer;
+
 const localWebServer = {
   command: "yarn preview:build",
   cwd: "../app",
-  url: "http://127.0.0.1:8080/react-e2e-testing/",
+  url: "http://127.0.0.1:8080/poc-react-playwright/",
   reuseExistingServer: true,
 };
 
+if (!process.env.CI) {
+  webServer = localWebServer;
+}
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -70,5 +75,5 @@ export default defineConfig({
   ],
 
   /* Run your local dev server before starting the tests */
-  webServer: process.env.CI ?? localWebServer,
+  webServer,
 });

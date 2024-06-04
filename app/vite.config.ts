@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/react-e2e-testing/",
+  base: "/poc-react-playwright/",
   preview: {
     port: 8080,
     strictPort: true,
